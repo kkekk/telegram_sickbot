@@ -53,7 +53,9 @@ def checkForMatric(matric):
     registered.append(matric)
     highestQ = highestQ +1
     q = next(patientqueue)
+    counter = 0
     with open("registered.txt", "a") as f:
+        counter += 1
         if highestQ < 10:
             f.write(matric + ",00" + str(highestQ) + "\n")
             zeroes = "00" + str(highestQ)
@@ -63,7 +65,7 @@ def checkForMatric(matric):
         elif highestQ >= 100:
             f.write(matric + str(highestQ) + "\n")
             zeroes = str(highestQ)
-    patientqueuenum = 'Registered Sucessfully! Please note that your queue number is: \n\n' + zeroes + '\n\nPlease arrive to the clinic in 30 minutes' 
+    patientqueuenum = 'Registered Sucessfully! Please note that your queue number is: \n\n' + zeroes + '\n\nPlease arrive to the clinic in ' + counter * 5 + ' minutes' 
     f = open('registered.txt', 'r')
     file_contents = f.read()
     print (file_contents)
